@@ -6,9 +6,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Job {
+	
+	
+	@ManyToOne
+	private Employee employee ;
 	
 	private long id;
 	private String description;

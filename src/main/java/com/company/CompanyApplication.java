@@ -7,6 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import com.company.beans.Company;
 import com.company.beans.Employee;
 import com.company.beans.Job;
 import com.company.repo.EmployeeRepository;

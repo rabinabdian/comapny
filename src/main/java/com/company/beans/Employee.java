@@ -13,6 +13,9 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Employee {
+	
+	
+	@OneToMany(mappedBy="employee")
 
 	private long id;
 	private String name;
