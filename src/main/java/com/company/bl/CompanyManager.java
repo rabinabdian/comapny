@@ -26,6 +26,16 @@ public class CompanyManager {
 	    }
 		return employees;
 	}
+
+	public void addEmployee(Employee employee) throws Exception {
+		// TODO Auto-generated method stub
+		List<Employee> existingEmployees = this.repo.findEmployeeByName(employee.getName());
+		if(existingEmployees.size()>0)
+		{
+			throw new Exception("Employee "+ employee.getName() +" alread exists");
+		}
+		this.repo.save(employee);
+	}
 	
 	
 }

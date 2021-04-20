@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.company.beans.Employee;
 import com.company.bl.CompanyManager;
+import com.company.repo.EmployeeRepository;
+import com.jb.mvcApp.beans.Person;
+import com.jb.mvcApp.beans.Product;
+import com.jb.mvcApp.repos.PersonRepository;
 
 
 @RestController
@@ -21,6 +25,10 @@ public class CompanyController {
 	@Autowired
 	CompanyManager companyManager;
 	
+	@Autowired
+	EmployeeRepository repo;
+	
+	
 	@GetMapping("get")
 	public ResponseEntity<List<Employee>> getAll()
 	{
@@ -28,5 +36,27 @@ public class CompanyController {
 		return new ResponseEntity<List<Employee>>(employees, HttpStatus.OK);
 		
 	}
+	
+	@PostMapping("addEmployee")
+	/**
+	 * This add employee to DB
+	 * 
+	 * @param employee
+	 * @return
+	 */
+	public ResponseEntity<?> addEmployee(@RequestBody Employee employee)
+	{
+		try
+		{
+			this.companyManager.addEmployee(employee);
+			return new ResponseEntity<Void>(HttpStatus.CREATED);
+		}
+		catch(Exception e)
+		{
+			return new ResponseEntity<Exception>(e,HttpStatus.FORBIDDEN);
+		}
+		
+	}
+	
 	
 }
