@@ -47,4 +47,18 @@ public class CompanyManager {
 		}
 		throw new Exception("Employee "+ id +" not exists!!!!");		
 	}
+	
+	
+	public List<Employee> getEmployee(String name) throws Exception {
+		// TODO Auto-generated method stub
+
+		Iterable<Employee> itrbl = this.repo.findEmployeeByName(name);
+		List<Employee> employees = new ArrayList<Employee>();
+	    for (Employee p : itrbl) {
+	    	employees.add(p);
+	    }
+		return employees;
+	}
+	
+	
 }

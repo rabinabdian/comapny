@@ -12,14 +12,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
-
 import com.company.beans.Employee;
 import com.company.bl.CompanyManager;
 import com.company.repo.EmployeeRepository;
-
-import ch.qos.logback.core.net.server.Client;
 
 @RestController
 @RequestMapping("CompanyManager")
@@ -80,16 +77,22 @@ public class CompanyController {
 		catch (Exception e) {
 			// TODO: handle exception
 			return new ResponseEntity<Exception>(e,HttpStatus.EXPECTATION_FAILED);
-
+		}
 		}
 	
-		
-		
-
 	
-
+	@GetMapping("/getEmployee")
+	public ResponseEntity<?> getEmployee(@RequestParam String name)
+	{
+		try {
+				List<Employee> employees = this.companyManager.getEmployee(name);		
+				return new ResponseEntity<List<Employee>>(employees, HttpStatus.OK);
+		}
 		
-
-	}
+		catch (Exception e) {
+			// TODO: handle exception
+			return new ResponseEntity<Exception>(e,HttpStatus.NOT_FOUND);
+		}
+		}
 	
 }
