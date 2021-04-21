@@ -8,4 +8,8 @@ import com.company.beans.Employee;
 
 public interface EmployeeRepository extends JpaRepository<Employee,Long>{
 	List<Employee> findEmployeeByName(String name);
+
+	Employee getEmployeeById(long id);
+
+	//Employee findOne(long empId);
 }

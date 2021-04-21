@@ -37,5 +37,16 @@ public class CompanyManager {
 		this.repo.save(employee);
 	}
 	
-	
+	public Employee getEmployee(long id) throws Exception {
+		// TODO Auto-generated method stub
+
+		Employee existingEmployee = this.repo.getEmployeeById(id);
+		if(existingEmployee !=null)
+		{
+			return existingEmployee;
+		}
+		throw new Exception("Employee "+ id +" not exists!!!!");
+		
+		
+	}
 }
