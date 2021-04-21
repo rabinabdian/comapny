@@ -4,12 +4,14 @@ import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.company.repo.EmployeeRepository;
 import com.company.repo.JobRepository;
 
 @Component
+@Scope("prototype")
 public class Company {
 
 	@Autowired
@@ -23,7 +25,7 @@ public class Company {
 	}
 	
 	public Employee getEmployee(long empId){
-		return empRepo.findOne(empId);
+		return empRepo.getEmployeeById(empId);
 	}
 	
 	public List<Employee> getEmployee(String name){
