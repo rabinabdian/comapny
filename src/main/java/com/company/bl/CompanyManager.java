@@ -45,8 +45,6 @@ public class CompanyManager {
 		{
 			return existingEmployee;
 		}
-		throw new Exception("Employee "+ id +" not exists!!!!");
-		
-		
+		throw new Exception("Employee "+ id +" not exists!!!!");		
 	}
 }
