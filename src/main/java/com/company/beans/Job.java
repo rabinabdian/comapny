@@ -8,15 +8,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 public class Job {
 	
 	
 	@ManyToOne
 	private Employee employee ;
-	
+	@ApiModelProperty(hidden = true)
 	private long id;
+	@ApiModelProperty(hidden = true)
 	private String description;
+	@ApiModelProperty(hidden = true)
 	private Date endDate;
 	
 	@Id

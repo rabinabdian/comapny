@@ -11,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 public class Employee {
 	
@@ -20,7 +22,18 @@ public class Employee {
 	private long id;
 	private String name;
 	private double salary;
+	@ApiModelProperty(hidden = true)
 	private List<Job> jobs= new ArrayList<>();
+	
+	 public Employee() {
+		// TODO Auto-generated constructor stub
+	}
+	 public Employee(long id,String name,double salary) {
+		// TODO Auto-generated constructor stub
+		 this.id=id;
+		 this.name=name;
+		 this.salary=salary;
+	}
 	
 	@Id
 	@GeneratedValue
